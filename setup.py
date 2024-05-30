@@ -22,7 +22,7 @@ setuptools.setup(
     install_requires=['cryptography>=3.1'],
     setuptools_git_versioning={
         "enabled": True,
-        "starting_version": "0.1.0",
+        "starting_version": "0.1.1",
     },
     setup_requires=["setuptools-git-versioning>=2.0,<3"]
 )
