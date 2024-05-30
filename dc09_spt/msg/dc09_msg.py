@@ -7,6 +7,8 @@ import datetime
 import random
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
+from dc09_spt.utils import convert_timestamp_to_dc09_datetime
+
 
 class dc09_msg:
     """
@@ -235,10 +237,21 @@ class dc09_msg:
         """
         extra = ''
         if 'lon' in params:
-            extra += '[X' + params['lon'] + ']'
+            extra += '[X' + str(params['lon']) + ']'
         if 'lat' in params:
-            extra += '[Y' + params['lat'] + ']'
+            extra += '[Y' + str(params['lat']) + ']'
         if 'mac' in params:
             extra += '[M' + params['mac'] + ']'
         if 'verification' in params:
             extra += '[V' + params['verification'] + ']'
+        if 'event_ts' in params:
+            dc09_datetime = convert_timestamp_to_dc09_datetime(params['event_ts'])
+            extra += '[H' + dc09_datetime + ']'
+        if 'speed' in params:
+            extra += '[S' + str(params['speed']) + ']'
+        if 'battery_level' in params:
+            extra += '[B' + str(params['battery_level']) + ']'
+        if 'alt' in params:
+            extra += '[Z' + str(params['alt']) + ']'
+
+        return extra

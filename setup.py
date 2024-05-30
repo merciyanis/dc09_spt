@@ -4,8 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="dc09_spt", 
-    version="0.0.3",
+    name="my_dc09_spt",
     author="Jacq. van Ovost",
     author_email="jacq.van.ovost@gmail.com",
     description="A dialler implementation using the SIA-DC09 protocol",
@@ -20,8 +19,11 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
-    install_requires=[
-    	'cryptograpy>=3.1'
-    	]
+    install_requires=['cryptography>=3.1'],
+    setuptools_git_versioning={
+        "enabled": True,
+        "starting_version": "0.1.1",
+    },
+    setup_requires=["setuptools-git-versioning>=2.0,<3"]
 )
 
