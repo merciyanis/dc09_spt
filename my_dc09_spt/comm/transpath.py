@@ -4,8 +4,8 @@
 # Author : Jacq. van Ovost
 # ----------------------------
 import logging
-from dc09_spt.comm.transpathtcp import TransPathTCP
-from dc09_spt.comm.transpathudp import TransPathUDP
+from my_dc09_spt.comm.transpathtcp import TransPathTCP
+from my_dc09_spt.comm.transpathudp import TransPathUDP
 
 
 class TransPath:

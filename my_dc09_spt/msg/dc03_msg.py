@@ -4,7 +4,7 @@
 # Author : Jacq. van Ovost
 # ----------------------------
 import time
-from dc09_spt.param import *
+from my_dc09_spt.param import *
 import logging
 """
 

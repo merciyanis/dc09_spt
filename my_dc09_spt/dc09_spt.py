@@ -3,14 +3,14 @@
 # (c 2018 van Ovost Automatisering b.v.
 # Author : Jacq. van Ovost
 # ----------------------------
-from dc09_spt.msg.dc09_msg import *
-from dc09_spt.msg.dc05_msg import *
-from dc09_spt.msg.dc03_msg import *
+from my_dc09_spt.msg.dc09_msg import *
+from my_dc09_spt.msg.dc05_msg import *
+from my_dc09_spt.msg.dc03_msg import *
 import time
 import threading
 from collections import deque
 import logging
-from dc09_spt.comm.transpath import TransPath
+from my_dc09_spt.comm.transpath import TransPath
 
 
 class dc09_spt:

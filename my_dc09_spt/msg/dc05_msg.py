@@ -3,7 +3,7 @@
 # (c 2018 van Ovost Automatisering b.v.
 # Author : Jacq. van Ovost
 # ----------------------------
-from dc09_spt.param import *
+from my_dc09_spt.param import *
 """
 
 Copyright (c) 2018  van Ovost Automatisering b.v.

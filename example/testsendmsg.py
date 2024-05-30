@@ -6,7 +6,7 @@
 import sys
 
 sys.path.append('../')
-from dc09_spt import dc09_spt
+from my_dc09_spt import dc09_spt
 
 import logging
 logging.basicConfig(format='%(module)-12s %(asctime)s %(levelname)-8s %(message)s')
