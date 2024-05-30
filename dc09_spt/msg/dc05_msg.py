@@ -82,7 +82,7 @@ class dc05_msg:
         if len(code) != 3:
             raise Exception('Code should be 3 positions')
         q = param.numpar(params,  'q', '1')
-        if q != '1' and q != '3' and q != '3':
+        if q not in ['1', '3', '6']:
             raise Exception('Qualifier q should be 1 or 3 or 6')
         area = param.numpar(params,  'area', '00')
         if len(area) != 2:
