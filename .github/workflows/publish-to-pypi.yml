@@ -56,7 +56,7 @@ jobs:
 
     environment:
       name: testpypi
-      url: https://pypi.org/p/my_dc09_spt
+      url: https://pypi.org/p/my-dc09-spt
 
     permissions:
       id-token: write  # IMPORTANT: mandatory for trusted publishing
