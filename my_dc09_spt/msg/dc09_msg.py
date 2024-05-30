@@ -234,6 +234,16 @@ class dc09_msg:
                     the mac address of the network interface in string format
                 'verification'
                     an internet or intranet adress to access alarm verification information e.g. a camera
+                'event_ts'
+                    the event timestamp in seconds since the epoch
+                'speed'
+                    the speed of the device
+                'battery_level'
+                    the battery level of the device
+                'alt'
+                    the altitude of the device
+                'gps_position'
+                    the GPS position of the device
         """
         extra = ''
         if 'lon' in params:
@@ -253,5 +263,7 @@ class dc09_msg:
             extra += '[B' + str(params['battery_level']) + ']'
         if 'alt' in params:
             extra += '[Z' + str(params['alt']) + ']'
+        if 'gps_position' in params:
+            extra += '[$P' + params['gps_position'] + ']'
 
         return extra
