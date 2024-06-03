@@ -15,19 +15,17 @@ logger = logging.getLogger()
 #logger.addHandler(handler)
 logger.setLevel(logging.DEBUG)
 
-ACCOUNT_ID = "ACCOUNT_ID"
+ACCOUNT_ID = "YA247940"
 
 spt1 = dc09_spt.dc09_spt(ACCOUNT_ID)
-spt1.set_path('main', 'primary', "localhost", 10011, account=ACCOUNT_ID, type='TCP')
+spt1.set_path('main', 'primary', "localhost", 1001, account=ACCOUNT_ID, type='TCP')
+spt1.set_path('main', 'secondary', "localhost", 10011, account=ACCOUNT_ID, type='TCP')
+
 spt1.send_msg('ADM-CID', {
-    'account':  '124',
-    'code': 400,
+    'account': 'YA247940',
+    'code': 121,
     'q': 1,
-    'zone': 14,
-    'speed': 10,
-    'event_ts': 1717055979010,
-    'battery_level': 100,
-    'lat': 6.84714,
-    'lon': -30.24099,
-    'alt': 0
+    'event_ts': 1717428918000,
+    'alt': 0,
+    'gps_position': 'N00.00.00,0 E00.00.00,0'
 })

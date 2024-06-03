@@ -357,6 +357,7 @@ class dc09_spt:
                                 res = dc09.dc09answer(self.msg_nr, antw)
                         if res[0] == 'ACK':
                             ret = True
+                        logging.info("Receiver has answered %s", res)
                 except Exception as e:
                     logging.error("Answer decode error %s", repr(e))
             logging.debug('Sent message nr %s mtype %s content %s to %s port %s answer %s', msg_nr, mtype, message,
@@ -706,10 +707,7 @@ class event_thread(threading.Thread):
                             self.tpaths[mb][ps]['ok'] = 1
                             self.tpaths_lock.release()
         if not msg_sent:
-            self.queuelock.acquire()
-            tup = mess[0], mess[1], mess[2]
-            self.queue.appendleft(tup)
-            self.queuelock.release()
+            raise Exception("None of the paths are working, message not sent")
         return msg_sent
 
     def active(self):
