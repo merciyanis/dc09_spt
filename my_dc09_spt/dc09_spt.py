@@ -272,6 +272,11 @@ class dc09_spt:
             self.send = event_thread(self.account, self.receiver, self.line, self.queue, self.queuelock, self.tpaths,
                                      self.tpaths_lock, self)
             self.send.start()
+            try:
+                self.send.join()
+            except Exception as e:
+                logging.error('Thread error %s', repr(e))
+                raise e
 
     def state(self):
         """
@@ -360,6 +365,7 @@ class dc09_spt:
                         logging.info("Receiver has answered %s", res)
                 except Exception as e:
                     logging.error("Answer decode error %s", repr(e))
+                    raise e
             logging.debug('Sent message nr %s mtype %s content %s to %s port %s answer %s', msg_nr, mtype, message,
                           path.host, path.port, antw)
         if conn is not None:
@@ -663,7 +669,11 @@ class event_thread(threading.Thread):
             self.running = True
             sent = 1
             while sent and len(self.queue):
-                sent = self.send()
+                self.exc = None
+                try:
+                    sent = self.send()
+                except Exception as e:
+                    self.exc = e
                 #            now = time.time()
                 # -------------------------
                 # decide how long to sleep
@@ -709,6 +719,12 @@ class event_thread(threading.Thread):
         if not msg_sent:
             raise Exception("None of the paths are working, message not sent")
         return msg_sent
+
+
+    def join(self, timeout = None):
+        threading.Thread.join(self, timeout)
+        if self.exc is not None:
+            raise self.exc
 
     def active(self):
         return self.running

@@ -19,13 +19,17 @@ ACCOUNT_ID = "YA247940"
 
 spt1 = dc09_spt.dc09_spt(ACCOUNT_ID)
 spt1.set_path('main', 'primary', "localhost", 1001, account=ACCOUNT_ID, type='TCP')
-spt1.set_path('main', 'secondary', "localhost", 10011, account=ACCOUNT_ID, type='TCP')
+spt1.set_path('main', 'secondary', "localhost", 1001, account=ACCOUNT_ID, type='TCP')
 
-spt1.send_msg('ADM-CID', {
-    'account': 'YA247940',
-    'code': 121,
-    'q': 1,
-    'event_ts': 1717428918000,
-    'alt': 0,
-    'gps_position': 'N00.00.00,0 E00.00.00,0'
-})
+try:
+    spt1.send_msg('ADM-CID', {
+        'account': 'YA247940',
+        'code': 121,
+        'q': 1,
+        'event_ts': 1717428918000,
+        'alt': 0,
+        'gps_position': 'N00.00.00,0 E00.00.00,0'
+    })
+except Exception as e:
+    print(e)
+    logging.error('Error sending message')
